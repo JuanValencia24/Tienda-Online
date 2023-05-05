@@ -1,33 +1,23 @@
 package com.co.jv.TiendaOnline.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "producto")
-public class Producto {
+@Table(name = "orden")
+public class Orden {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idproducto")
+    @Column(name = "idorden")
     private Integer id;
-    @NotNull
-    private String nombre;
-    @NotNull
-    private String descripcion;
 
-    @NotNull
-    private Double precio;
-    @NotNull
-    private Integer stock;
-    @NotNull
+    private Double total;
     private LocalDateTime fecha;
-
 }
