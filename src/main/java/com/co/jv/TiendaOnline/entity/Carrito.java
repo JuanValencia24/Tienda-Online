@@ -18,5 +18,13 @@ public class Carrito {
 
     private Integer catidad;
 
+    @ManyToOne
+    @JoinColumn(name = "producto_idproducto")
+    private Producto producto;
+
+    @OneToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
+
 
 }

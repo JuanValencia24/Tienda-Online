@@ -25,4 +25,15 @@ public class Domicilio {
     @Column(name = "informacion_ad")
     private String informcionAd;
 
+    @OneToOne
+    @JoinColumn(name = "departamento_id")
+    private Departamento departamento;
+
+    @OneToOne
+    @JoinColumn(name = "ciudad_id")
+    private Ciudad ciudad;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
 }

@@ -20,4 +20,19 @@ public class Orden {
 
     private Double total;
     private LocalDateTime fecha;
+
+    @OneToOne
+    @JoinColumn(name = "domicilio_id")
+    private Domicilio domicilio;
+
+    @OneToOne
+    @JoinColumn(name = "metodo_pago_idmetodo_pago")
+    private MetodoPago metodoPago;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
+
+
+
 }

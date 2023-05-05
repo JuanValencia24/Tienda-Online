@@ -22,12 +22,19 @@ public class Producto {
     private String nombre;
     @NotNull
     private String descripcion;
-
     @NotNull
     private Double precio;
     @NotNull
     private Integer stock;
     @NotNull
     private LocalDateTime fecha;
+
+    @OneToOne
+    @JoinColumn(name = "estado_idestado")
+    private Estado estado;
+
+    @ManyToOne
+    @JoinColumn(name = "categoria_idcategoria")
+    private Categoria categoria;
 
 }
