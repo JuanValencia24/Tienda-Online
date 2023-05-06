@@ -26,13 +26,8 @@ public class Domicilio {
     private String informcionAd;
 
     @OneToOne
-    @JoinColumn(name = "departamento_id")
-    private Departamento departamento;
-
-    @OneToOne
-    @JoinColumn(name = "ciudad_id")
-    private Ciudad ciudad;
-
+    @JoinColumn(name = "ciudad_has_departamento_id_ciudad_departamento")
+    private CiudadDepartamento ciudadDepartamento;
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
