@@ -18,16 +18,13 @@ public class Producto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idproducto")
     private Integer id;
-    @NotNull
+
     private String nombre;
-    @NotNull
     private String descripcion;
-    @NotNull
     private Double precio;
-    @NotNull
     private Integer stock;
-    @NotNull
-    private LocalDateTime fecha;
+    @Column(name = "fecha_creacion")
+    private LocalDateTime fechaCreacion;
 
     @OneToOne
     @JoinColumn(name = "estado_idestado")
