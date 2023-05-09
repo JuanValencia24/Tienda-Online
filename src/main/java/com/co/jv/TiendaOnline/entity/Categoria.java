@@ -26,21 +26,4 @@ public class Categoria {
     @Column(name = "fecha_actualizacion")
     private LocalDateTime fechaActualizacion;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    @Override
-    public String toString() {
-        return "Categoria{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", fechaCreacion=" + fechaCreacion +
-                ", fechaActualizacion=" + fechaActualizacion +
-                '}';
-    }
 }

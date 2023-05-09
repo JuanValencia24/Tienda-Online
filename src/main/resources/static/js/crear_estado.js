@@ -1,8 +1,8 @@
 async function registrar() {
     let datos = {};
   
-    datos.nombre = document.getElementById("nombre").value;
-    const request = await fetch("/api/registro/categoria/post", {
+    datos.estado = document.getElementById("estado").value;
+    const request = await fetch("/api/registro/estado/post", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -19,4 +19,3 @@ async function registrar() {
       alert("ESE CORREO EXISTE, INGRESE OTRO POR FAVOR");
     }
   }
-  

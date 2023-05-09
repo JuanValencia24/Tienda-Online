@@ -26,11 +26,7 @@ public class CategoriaRestController {
     @PostMapping(value = "/registro/categoria/post")
     public String guardarCategoria(@RequestBody @Valid CategoriaDTO categoriaDTO, Errors errores){
         categoriaDTO.setFechaCreacion(LocalDateTime.now());
-
-        System.out.println("Hora:"+categoriaDTO.getFechaCreacion()+" Nombre "+ categoriaDTO.getNombre());
-        System.out.println(mapper.categoriaDTOToCategoria(categoriaDTO));
-        // categoriaService.save();
-
+        categoriaService.save(mapper.categoriaDTOToCategoria(categoriaDTO));
         if (errores.hasErrors()){
             return "FAIL";
         }
