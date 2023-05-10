@@ -16,19 +16,17 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-ms-6 container justify-contten-center card">
-                <form method="post" class="needs-validation" novalidate>
+                <form method="post" th:action="@{/api/registro/estado/post}" th:object="${estadoDTO}">
                     <div class="input-group mb-3">
                         <div class="form-floating mb-3 input-group-text">
-                            <input type="text" class="form-control" id="estado" name="estado"
-                                   required>
+                            <input type="text" class="form-control" name="estado" th:field="*{estado}">
                             <label for="estado" class="form-label">Nombre Del Estado</label>
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
+                            <small class="form-text text-danger" th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}"></small>
                         </div>
                     </div>
+                    
                     <div class="col-12">
-                        <button class="btn btn-primary"  onclick="registrar()" type="button">Crear</button>
+                        <button class="btn btn-primary" type="submit">Crear</button>
                     </div>
                 </form>
             </div>

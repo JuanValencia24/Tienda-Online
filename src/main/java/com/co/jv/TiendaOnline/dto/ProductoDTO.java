@@ -13,11 +13,18 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CategoriaDTO {
-    @NotBlank(message = "el campo nombre no debe estar vacio")
+public class ProductoDTO {
+    @NotEmpty
+    @NotBlank
     private String nombre;
-
+    @NotEmpty
+    @NotBlank
+    private String descripcion;
+    @NotNull
+    @NotBlank
+    private Double precio;
+    @NotNull
+    @NotBlank
+    private Integer stock;
     private LocalDateTime fechaCreacion;
-    private LocalDateTime fechaActualizacion;
-
 }
