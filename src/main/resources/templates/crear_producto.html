@@ -18,55 +18,58 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-ms-6 container justify-contten-center card">
-                <form action="#" method="post" class="needs-validation" novalidate>
-                    <div class="input-group mb-3">
-                        <div class="form-floating mb-3 input-group-text">
-                            <input type="text" class="form-control" id="nombre" name="nombre"
-                                   placeholder="Tenis Nike Freak 4" required>
-                            <label for="nombre" class="form-label">Nombre Del Producto</label>
-                            <div class="valid-feedback">
-                                Looks good!
+                    <form th:action="@{/api/registro/producto/post}" method="post" th:object="${productoDTOPlantilla}">
+                        <div class="input-group mb-3">
+                            <div class="form-floating mb-3 input-group-text">
+                                <input type="text" class="form-control" id="nombre" name="nombre" th:field="*{nombre}">
+                                <label for="nombre" class="form-label">Nombre Del Producto</label>
+                                <small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
                             </div>
                         </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="form-floating mb-3 input-group-text">
-                            <input type="number" class="form-control" id="precio" name="precio" placeholder="250000">
-                            <label for="precio" class="form-label">Precio</label>
+                        <div class="input-group mb-3">
+                            <div class="form-floating mb-3 input-group-text">
+                                <input type="number" class="form-control" id="precio" name="precio" th:field="*{precio}">
+                                <label for="precio" class="form-label">Precio</label>
+                                <small class="form-text text-danger" th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></small>
+                            </div>
+                            <div class="form-floating mb-3 input-group-text">
+                                <input type="number" class="form-control" id="stock" name="stock" th:filed="*{stock}">
+                                <label for="stock" class="form-label">Stock</label>
+                                <small class="form-text text-danger" th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}"></small>
+                            </div>
                         </div>
-                        <div class="form-floating mb-3 input-group-text">
-                            <input type="number" class="form-control" id="stock" name="stock" placeholder="20">
-                            <label for="stock" class="form-label">Stock</label>
+                        <div class="input-group mb-3">
+                            <div class="form-floating mb-3 input-group-text">
+                                <textarea class="form-control" id="descripcion" name="descripcion" th:field="*{descripcion}"
+                                    style="height: 100px"></textarea>
+                                <label for="descripcion" class="form-label">Descripcion</label>
+                                <small class="form-text text-danger" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></small>
+                            </div>
                         </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="form-floating mb-3 input-group-text">
-                            <textarea class="form-control" id="descripcion" name="descripcion" placeholder="250000" style="height: 100px"></textarea>
-                            <label for="descripcion" class="form-label">Descripcion</label>
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="form-floating mb-3 input-group-text">
-                            <select class="form-select" id="estado" name="estado" th:each="estado :${estados}">
-                                <option selected>Abra para seleccionar estado</option>
-                                <option th:value="${estado.id}" th:text="${estado.estado}"></option>
-                              </select>
-                            <label for="estado" class="form-label">Estado</label>
-                        </div>
+                        <div class="input-group mb-3">
+                            <div class="form-floating mb-3 input-group-text">
+                                <select class="form-select" id="estado" name="estado" th:field="*{estado}">
+                                    <option value="" selected disabled>Seleccione un estado</option>
+                                    <option th:each="estado : ${estados}" th:value="${estado.id}" th:text="${estado.estado}"></option>
+                                    <small class="form-text text-danger" th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}"></small>
+                                </select>
+                                <label for="estado" class="form-label">Estado</label>
+                            </div>
 
-                        <div class="form-floating mb-3 input-group-text">
-                            <select class="form-select" id="categoria" name="categoria" th:each="categoria : ${categorias}">
-                                <option selected>Abra para seleccionar categoria</option>
-                                <option th:value="${categoria.id}" th:text="${categoria.nombre}"></option>
-                            </select>
-                            <label for="categoria" class="form-label">Categoria</label>
+                            <div class="form-floating mb-3 input-group-text">
+                                <select class="form-select" id="categoria" name="categoria" th:field="*{categoria}">
+                                    <option value="" selected disabled>Seleccione una categoría</option>
+                                    <option th:each="categoria : ${categorias}" th:value="${categoria.id}" th:text="${categoria.nombre}"></option>
+                                </select>
+                                <label for="categoria" class="form-label">Categoria</label>
+                                <small class="form-text text-danger" th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}"></small>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-12">
-                        <button class="btn btn-primary" type="submit">Submit form</button>
-                    </div>
-                </form>
-            </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary" type="submit">Crear</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </main>
@@ -76,8 +79,8 @@
 
     <script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.min.js}"
         src="/webjars/bootstrap/5.2.3/js/bootstrap.min.js"></script>
-    
-    <script type="text/javascript" ></script> 
+
+    <script type="text/javascript"></script>
 </body>
 
 </html>

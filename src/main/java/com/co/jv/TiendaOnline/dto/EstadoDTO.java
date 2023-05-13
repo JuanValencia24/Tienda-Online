@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class EstadoDTO {
+    private Integer id;
     @NotEmpty(message = "El campo estado no debe estar vacio")
     private String estado;
 }

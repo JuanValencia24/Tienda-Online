@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class EstadoServiceImpl implements EstadoService{
 
@@ -27,5 +29,17 @@ public class EstadoServiceImpl implements EstadoService{
     @Transactional
     public void save(Estado estado) {
         estadoRepository.save(estado);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Estado buscarPorId(Integer id) {
+        Optional<Estado> estadoOpcional =estadoRepository.findById(id);
+        if (estadoOpcional.isPresent()){
+            Estado estado = new Estado();
+            estado = estadoOpcional.get();
+            return estado;
+        }
+        return null;
     }
 }

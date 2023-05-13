@@ -31,7 +31,7 @@ public class Producto {
     private Estado estado;
 
     @ManyToOne
-    @JoinColumn(name = "categoria_idcategoria",updatable = false,insertable = false)
+    @JoinColumn(name = "categoria_idcategoria")
     private Categoria categoria;
 
 }

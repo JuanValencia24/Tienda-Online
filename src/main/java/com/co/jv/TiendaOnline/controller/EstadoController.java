@@ -29,10 +29,11 @@ public class EstadoController {
 
     @PostMapping("/registro/estado/post")
     public String guardarEstado(@Valid EstadoDTO estadoDTO, BindingResult errores) {
-        estadoService.save(mapper.estadoDTOToEstado(estadoDTO));
+
         if (errores.hasErrors()) {
             return "crear_estado";
         }
+        estadoService.save(mapper.estadoDTOToEstado(estadoDTO));
         return "crear_producto";
     }
 

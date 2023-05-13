@@ -27,7 +27,7 @@ public class CategoriaController {
     private CategoriaMapper mapper;
 
     @GetMapping("/registro/categoria")
-    public String verCategoria(CategoriaDTO categoriaDTO){
+    public String verRegistroCategoria(CategoriaDTO categoriaDTO){
         return "crear_categoria";
     }
 

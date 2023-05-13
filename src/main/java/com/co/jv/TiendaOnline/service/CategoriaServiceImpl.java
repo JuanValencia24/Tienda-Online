@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoriaServiceImpl implements CategoriaService{
@@ -28,6 +29,18 @@ public class CategoriaServiceImpl implements CategoriaService{
         }
         return lista;
 
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Categoria buscarPorId(Integer id) {
+        Optional<Categoria> categoriaOptional = categoriaRepository.findById(id);
+        if (categoriaOptional.isPresent()){
+            Categoria categoria = new Categoria();
+            categoria= categoriaOptional.get();
+            return categoria;
+        }
+        return null;
     }
 
 }
